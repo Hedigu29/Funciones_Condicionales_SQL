@@ -1,0 +1,2 @@
+# Funciones_Condicionales_SQL
+presentación sobre funciones condicionales
