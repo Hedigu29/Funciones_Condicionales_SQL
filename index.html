@@ -1,0 +1,104 @@
+import os
+
+# Define the HTML content for the presentation using Reveal.js
+html_content = """
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Funciones Condicionales en SQL</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/monokai.min.css">
+    
+    <style>
+        .reveal h1 { font-size: 2.5em; color: #bd93f9; }
+        .reveal h2 { color: #8be9fd; }
+        .highlight-box {
+            background: #44475a;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 10px solid #50fa7b;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h1>Funciones Condicionales en SQL</h1>
+                <p>Lógica de negocio en tus consultas</p>
+                <p><small>Presentación de 3 minutos</small></p>
+            </section>
+
+            <section>
+                <h2>Minuto 1: El Rey CASE</h2>
+                <p>Es el estándar universal (ANSI SQL).</p>
+                <pre><code class="sql" data-trim data-noescape>
+SELECT producto,
+  CASE 
+    WHEN stock = 0 THEN 'Agotado'
+    WHEN stock < 10 THEN 'Crítico'
+    ELSE 'Disponible'
+  END AS estado
+FROM Inventario;
+                </code></pre>
+                <p><small>Tip: Siempre evalúa de arriba hacia abajo.</small></p>
+            </section>
+
+            <section>
+                <h2>Minuto 2: Manejo de Nulos</h2>
+                <p><code>COALESCE</code>: Devuelve el primer valor <b>no nulo</b>.</p>
+                <div class="highlight-box">
+                    <pre><code class="sql" data-trim>
+SELECT nombre, 
+COALESCE(telefono, email, 'Sin contacto')
+FROM Clientes;
+                    </code></pre>
+                </div>
+                <p>Ideal para limpiar reportes con datos incompletos.</p>
+            </section>
+
+            <section>
+                <h2>Minuto 3: Atajos y Tips</h2>
+                <p>En MySQL existe <code>IF(cond, V, F)</code>:</p>
+                <pre><code class="sql" data-trim>
+SELECT IF(precio > 100, 'Caro', 'Barato') 
+FROM Productos;
+                </code></pre>
+                <hr>
+                <ul style="font-size: 0.8em;">
+                    <li><b>CASE:</b> Potente y compatible.</li>
+                    <li><b>COALESCE:</b> Salvavidas para NULLs.</li>
+                    <li><b>Alias:</b> Usa siempre <code>AS</code> para claridad.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>¡Gracias!</h2>
+                <p>¿Preguntas?</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [ RevealHighlight ]
+        });
+    </script>
+</body>
+</html>
+"""
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
