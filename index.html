@@ -34,11 +34,10 @@ html_content = """
             <section>
                 <h1>Funciones Condicionales en SQL</h1>
                 <p>Lógica de negocio en tus consultas</p>
-                <p><small>Presentación de 3 minutos</small></p>
             </section>
 
             <section>
-                <h2>Minuto 1: El Rey CASE</h2>
+                <h2>El Rey CASE</h2>
                 <p>Es el estándar universal (ANSI SQL).</p>
                 <pre><code class="sql" data-trim data-noescape>
 SELECT producto,
@@ -53,7 +52,7 @@ FROM Inventario;
             </section>
 
             <section>
-                <h2>Minuto 2: Manejo de Nulos</h2>
+                <h2>Manejo de Nulos</h2>
                 <p><code>COALESCE</code>: Devuelve el primer valor <b>no nulo</b>.</p>
                 <div class="highlight-box">
                     <pre><code class="sql" data-trim>
@@ -66,7 +65,7 @@ FROM Clientes;
             </section>
 
             <section>
-                <h2>Minuto 3: Atajos y Tips</h2>
+                <h2>Atajos y Tips</h2>
                 <p>En MySQL existe <code>IF(cond, V, F)</code>:</p>
                 <pre><code class="sql" data-trim>
 SELECT IF(precio > 100, 'Caro', 'Barato') 
@@ -82,7 +81,6 @@ FROM Productos;
 
             <section>
                 <h2>¡Gracias!</h2>
-                <p>¿Preguntas?</p>
             </section>
 
         </div>
